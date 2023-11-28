@@ -1,0 +1,43 @@
+pipeline {
+agent any
+stages{
+
+stage('gitcode')
+    {
+        steps{
+            
+            git 'https://github.com/krishnareddypadala/javavulnbank.git'
+    
+            }
+    }
+stage('maven')
+   {
+        steps{
+            
+             sh 'mvn clean install'
+    
+            }
+    }
+    
+stage('dc')
+   {
+        steps{
+            
+             dependencyCheck additionalArguments: '', odcInstallation: 'demo'
+    
+            }
+    }
+
+stage('dcra')
+   {
+        steps{
+            
+             dependencyCheckPublisher failedNewCritical: 0, failedNewHigh: 0, failedNewLow: 0, failedNewMedium: 0, failedTotalCritical: 0, failedTotalHigh: 0, failedTotalLow: 0, failedTotalMedium: 0, pattern: 'dependency-check-report.xml', stopBuild: true, unstableNewCritical: 0, unstableNewHigh: 0, unstableNewLow: 0, unstableNewMedium: 0, unstableTotalCritical: 0, unstableTotalHigh: 0, unstableTotalLow: 0, unstableTotalMedium: 0
+    
+            }
+    }
+  
+
+}
+
+}
