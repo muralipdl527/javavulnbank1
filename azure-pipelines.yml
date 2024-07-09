@@ -20,3 +20,18 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: FortifyOnDemandStatic@9
+  inputs:
+    FortifyProjects: 'C:\myagent\vsts-agent-win-x64-3.241.0\_work\3\s'
+    FodConnection: 'test_sastado'
+    ReleaseOptions: '0'
+    ReleaseId: 144051
+    EntitlementSelection: '1'
+    EntitlementPreference: '1'
+    OverrideScanSettings: '1'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '2'
+    BuildType: 'mvn'
+    TechnologyStackJavaOne: '7'
+    LanguageLevelJava: '12'
+    PolicyFailAction: '1'
