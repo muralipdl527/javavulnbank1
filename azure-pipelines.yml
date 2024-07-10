@@ -9,29 +9,17 @@ trigger:
 pool: mycomputeragent
 
 steps:
-- task: Maven@3
+- task: FortifyDASTAutomated@2
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
-
-- task: FortifyOnDemandStatic@9
-  inputs:
-    FortifyProjects: 'C:\myagent\vsts-agent-win-x64-3.241.0\_work\3\s'
-    FodConnection: 'test_sastado'
+    FodConnection: 'dast_ado'
     ReleaseOptions: '0'
-    ReleaseId: 144051
-    EntitlementSelection: '1'
-    EntitlementPreference: '1'
+    ReleaseId: 145884
+    AssessmentTypeId: 119
+    EntitlementId: 3358
+    EntitlementFrequencyType: 'SingleScan'
     OverrideScanSettings: '1'
-    InProgressScanActionType: '2'
-    RemediationScanPreference: '2'
-    BuildType: 'mvn'
-    TechnologyStackJavaOne: '7'
-    LanguageLevelJava: '12'
+    Url: 'http://zero.webappsecurity.com/'
+    TimeZone: 'India Standard Time'
+    EnvironmentFacing: '0'
+    Scope: '0'
     PolicyFailAction: '1'
