@@ -1,14 +1,14 @@
 
-pool: mycomputeragent
+pool: test
 
 steps:
 - task: FortifyDASTAutomated@2
   inputs:
     FodConnection: 'dast_ado'
     ReleaseOptions: '0'
-    ReleaseId: 145884
-    AssessmentTypeId: 119
-    EntitlementId: 3358
+    ReleaseId: 1354142
+    AssessmentTypeId: 268
+    EntitlementId: 13679
     EntitlementFrequencyType: 'SingleScan'
     OverrideScanSettings: '1'
     Url: 'http://zero.webappsecurity.com/'
